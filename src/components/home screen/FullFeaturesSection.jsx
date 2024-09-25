@@ -15,14 +15,7 @@ const images = [
 const FullFeaturesSection = () => {
   return (
     <div>
-        <div className="text-center">
-        <h2 className="text-3xl sm:text-5xl lg:text-4xl mt-10 lg:mt-5 tracking-wide">
-        Popular{" "}
-          <span className="bg-gradient-to-r from-blue-500 to-blue-800 text-transparent bg-clip-text">
-          Activities
-          </span>
-        </h2>
-      </div>
+        
       <div className="my-20 mx-0 relative">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
         {images.map((image, index) => (
