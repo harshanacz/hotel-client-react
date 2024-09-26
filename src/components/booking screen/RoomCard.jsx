@@ -11,10 +11,11 @@ const RoomCard = ({ room }) => {
   return (
     <div className="w-full max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden mb-6 cursor-pointer" onClick={handleClick}>
       <img
-        src={room.imgUrls[0]} 
-        alt={room.name}
-        className="w-full h-48 object-cover"
-      />
+  src={room.imgUrls[0]}
+  alt={room.name}
+  className="w-full h-48 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
+/>
+
       <div className="p-4">
         <h2 className="text-xl font-bold mb-2">{room.name}</h2>
         <p className="text-gray-600 mb-2">{room.description}</p>

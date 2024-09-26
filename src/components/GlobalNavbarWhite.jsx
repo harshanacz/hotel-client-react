@@ -30,14 +30,7 @@ const GlobalNavbarWhite = () => {
               </li>
             ))}
           </ul>
-          <div className="hidden lg:flex justify-center space-x-6 items-center">
-            <a
-              href="#"
-              className={`py-2 px-3 rounded-full text-white bg-gradient-to-r from-blue-500 to-blue-800`}
-            >
-              Book Now
-            </a>
-          </div>
+          
           <div className="lg:hidden md:flex flex-col justify-end">
             <button onClick={toggleNavbar}>
               {mobileDrawerOpen ? <X /> : <Menu />}
@@ -53,14 +46,7 @@ const GlobalNavbarWhite = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex space-x-6">
-              <a
-                href="#"
-                className="bg-gradient-to-r from-blue-500 to-blue-800 py-2 px-3 rounded-full text-white"
-              >
-                Book Now
-              </a>
-            </div>
+            
           </div>
         )}
       </div>
