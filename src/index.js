@@ -8,8 +8,13 @@ import {
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import BookingPage from './pages/BookingPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; 
+import RoomPage from './pages/RoomPage';
 
-// Create a router with defined routes
+// QueryClient
+const queryClient = new QueryClient();
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,16 +24,18 @@ const router = createBrowserRouter([
     path: "booking",
     element: <BookingPage />,
   },
-  // {
-  //   path: "login",
-  //   element: <SignInPage />,
-  // },
+  {
+    path: "room/:roomId", // Dynamic route - room ID
+    element: <RoomPage />,  
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} /> {/* Provide the router to the application */}
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} /> 
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

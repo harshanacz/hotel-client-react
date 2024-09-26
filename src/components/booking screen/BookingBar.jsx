@@ -48,7 +48,7 @@ const BookingBar = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-800 to-blue-900 text-white p-4">
+    <div className="text-black p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
         {/* Check-in Date */}
         <div className="flex flex-col">

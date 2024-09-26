@@ -1,8 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const RoomCard = ({ room }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/room/${room._id}`); // Use room ID for navigation
+  };
+
   return (
-    <div className="max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+    <div className="w-full max-w-sm mx-auto bg-white rounded-lg shadow-lg overflow-hidden mb-6 cursor-pointer" onClick={handleClick}>
       <img
         src={room.imgUrls[0]} 
         alt={room.name}
