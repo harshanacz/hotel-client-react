@@ -10,6 +10,8 @@ import reportWebVitals from './reportWebVitals';
 import BookingPage from './pages/BookingPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; 
 import RoomPage from './pages/RoomPage';
+import PaymentPage from './pages/PaymentPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 // QueryClient
 const queryClient = new QueryClient();
@@ -25,9 +27,17 @@ const router = createBrowserRouter([
     element: <BookingPage />,
   },
   {
-    path: "room/:roomId", // Dynamic route - room ID
+    path: "room/:roomId", // Dynamic - room ID
     element: <RoomPage />,  
   },
+  {
+    path: "payment",
+    element: <PaymentPage />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage/>,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

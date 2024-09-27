@@ -95,7 +95,7 @@ const RoomPage = () => {
           </div>
 
           {/* Booking Bar Component */}
-          <BookingBar roomPricePerNight={room.pricePerDay} />
+          <BookingBar roomPricePerNight={room.pricePerDay}   room={room}  />
         </div>
       </div>
     </MainLayout>

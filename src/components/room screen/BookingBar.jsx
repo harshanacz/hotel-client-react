@@ -1,13 +1,26 @@
-
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { toast } from 'react-toastify';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
-const BookingBar = ({ roomPricePerNight }) => {
+const BookingBar = ({ roomPricePerNight, room }) => {
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
+
+  const navigate = useNavigate();
+
+  const handleBooking = () => {
+    navigate('/payment', {
+      state: {
+        roomDetails: room, // Ensure room details are correctly passed
+        checkInDate: checkInDate?.toISOString(), // Convert to ISO string
+        checkOutDate: checkOutDate?.toISOString(),
+        totalPrice: calculateTotalPrice(),
+      },
+    });
+  };
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -24,6 +37,8 @@ const BookingBar = ({ roomPricePerNight }) => {
       setCheckOutDate(null);
     }
   };
+
+ 
 
   const handleCheckOutChange = (date) => {
     if (date && date <= checkInDate) {
@@ -42,7 +57,6 @@ const BookingBar = ({ roomPricePerNight }) => {
   return (
     <div className="text-black p-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        {/* Check-in Date */}
         <div className="flex flex-col">
           <label className="mb-1">Check-in Date:</label>
           <DatePicker
@@ -56,7 +70,6 @@ const BookingBar = ({ roomPricePerNight }) => {
           />
         </div>
 
-        {/* Check-out Date */}
         <div className="flex flex-col">
           <label className="mb-1">Check-out Date:</label>
           <DatePicker
@@ -71,19 +84,20 @@ const BookingBar = ({ roomPricePerNight }) => {
         </div>
       </div>
 
-      {/* Total Price Display */}
-      
       <div className="mt-4">
-      <h2 className="text-xl font-semibold">Total Days: {calculateTotalPrice() != 0 ?(checkOutDate - checkInDate) / (1000 * 60 * 60 * 24):'_'}</h2>
+        <h2 className="text-xl font-semibold">
+          Total Days: {checkInDate && checkOutDate ? (checkOutDate - checkInDate) / (1000 * 60 * 60 * 24) : '_'}
+        </h2>
         <h2 className="text-xl font-semibold">Total Price: ${calculateTotalPrice()}</h2>
       </div>
 
-      {/* Booking Button */}
-      <button className="mt-4 bg-blue-500 text-white px-6 py-3 rounded-full transition-transform duration-300 transform hover:scale-105 active:scale-95">
-  Book the Room
-</button>
-{/* // add refund policy */}
-      
+      <button
+    className="mt-4 bg-blue-500 text-white px-6 py-3 rounded-full transition-transform duration-300 transform hover:scale-105 active:scale-95"
+    onClick={handleBooking}
+  >
+    Book the Room
+  </button>
+
     </div>
   );
 };
